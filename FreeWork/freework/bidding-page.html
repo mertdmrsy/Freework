@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Finate - Job Portal Website Template Using Bootstrap 5"/>
+    <meta name="keywords" content="accessories, digital products, electronic html, modern, products, responsive"/>
+    <meta name="author" content="hastech"/>
+
+    <title>FreeWork</title>
+
+    <!--== Favicon ==-->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+
+    <!--== Google Fonts ==-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--== Bootstrap CSS ==-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--== Icofont Icon CSS ==-->
+    <link href="assets/css/icofont.css" rel="stylesheet" />
+    <!--== Swiper CSS ==-->
+    <link href="assets/css/swiper.min.css" rel="stylesheet" />
+    <!--== Fancybox Min CSS ==-->
+    <link href="assets/css/fancybox.min.css" rel="stylesheet" />
+    <!--== Aos Min CSS ==-->
+    <link href="assets/css/aos.min.css" rel="stylesheet" />
+
+    <!--== Main Style CSS ==-->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.3/milligram.min.css">
+</head>
+
+<body>
+
+<!--wrapper start-->
+<div class="wrapper">
+
+    <!--== Start Header Wrapper ==-->
+    <header class="header-area transparent">
+        <div class="container">
+            <div class="row no-gutter align-items-center position-relative">
+                <div class="col-12">
+                    <div class="header-align">
+                        <div class="header-align-start">
+                            <div class="header-logo-area">
+                                <a style="color: #83030f!important;" href="index.html">
+                                    <b class="logosize">FreeWork</b>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-align-center">
+                            <div class="header-navigation-area position-relative">
+                                <ul class="main-menu nav">
+                                    <li><a href="index.html"><span>Home</span></a></li>
+                                    <li class="has-submenu"><a href="#/"><span>Find Jobs</span></a>
+
+                                    </li>
+                                    <li class="has-submenu"><a href="#/"><span>Freelancers</span></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="header-align-end">
+                            <div class="header-action-area">
+                                <a href="freelancer-details.html" title="user icons"><img class="userimage" src="assets/img/user.png" alt=""></a>
+                                <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
+                                    <i class="icofont-navigation-menu"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<div style="margin-top: 150px" class="container">
+    <h4>Offers For That Job</h4>
+
+    <hr />
+
+    <div class="row">
+        <div class="column">
+            <label>Job Name</label>
+            <blockquote><p><em id="beneficiary">Full-Stack Developer</em><br /><br /></p></blockquote>
+        </div>
+        <div class="column">
+            <label>Job Period</label>
+            <blockquote><p><em id="timeleft">Full-Time</em><br /></p></blockquote>
+        </div>
+        <div class="column">
+            <label>Timeleft</label>
+            <blockquote><p><em id="timeleft">2</em><br />Days</p></blockquote>
+        </div>
+        <div class="column">
+            <label>Highest Offer</label>
+            <blockquote><p><em>4500<span id="highestBidder"></span><br />
+                <span id="highestBid"></span> $</em></p></blockquote>
+        </div>
+        <div class="column">
+            <label>Your Name<label>
+                <blockquote><p><em id="accountAddress">Osman Mert Demirsoy</em><br /><br /></p></blockquote>
+        </div>
+        <div class="column">
+            <label>Your Last Offer</label>
+            <blockquote><p><em id="accountBalance">4750</em><br />$</p></blockquote>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="column column-25">
+            <label>Offer Amount</label>
+            <input type="number" id="bidAmount" placeholder="4000 $">
+        </div>
+        <div  class="column column-25">
+            <label ><br /></label>
+            <button style="background-color:#83030f;"  id="makeBid">Offer</button>
+        </div>
+    </div>
+
+    <hr />
+
+    <button style="background-color:#83030f;" id="endAuction" disabled="disabled">End Auction</button>
+
+    <br /><br />
+
+    <div id="response"></div>
+</div>
+
+    <script type="text/javascript" src="ethereumjs-testrpc.js"></script>
+    <script type="text/javascript" src="ethjs.js"></script>
+    <script type="text/javascript">
+        var eth = new Eth(TestRPC.provider());
+        var el = function(id){ return document.querySelector(id); };
+
+        /*
+        // uncomment to enable MetaMask support:
+        if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
+          eth.setProvider(window.web3.currentProvider);
+        } else {
+          eth.setProvider(provider); // set to TestRPC if not available
+        }
+        */
+
+        eth.accounts().then(function(accounts) {
+            accounts.forEach(function(address){
+                bidAccount.innerHTML += '<option value="' + address + '">'
+                    + address + '</option>';
+            });
+
+            el('#accountAddress').innerHTML = accounts[0].substr(0, 12);
+
+            var SimpleAuctionBytecode = '60606040523461000057604051604080610621833981016040528080519060200190919080519060200190919050505b80600060006101000a81548173ffffffffffffffffffffffffffffffffffffffff02191690836c0100000000000000000000000090810204021790555042600181905550816002819055505b50505b6105958061008c6000396000f360606040523615610086576000357c0100000000000000000000000000000000000000000000000000000000900480631998aeef1461008b5780632a24f46c1461009557806338af3eed146100a45780633ccfd60b146100dd5780634f245ef71461010257806391f9015714610125578063d074a38d1461015e578063d57bde7914610181575b610000565b6100936101a4565b005b34610000576100a2610301565b005b34610000576100b1610450565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34610000576100ea610476565b60405180821515815260200191505060405180910390f35b346100005761010f61055d565b6040518082815260200191505060405180910390f35b3461000057610132610563565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b346100005761016b610589565b6040518082815260200191505060405180910390f35b346100005761018e61058f565b6040518082815260200191505060405180910390f35b600254600154014211156101b757610000565b600454341115156101c757610000565b6000600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161415156102655760045460056000600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055505b33600360006101000a81548173ffffffffffffffffffffffffffffffffffffffff02191690836c01000000000000000000000000908102040217905550346004819055507ff4757a49b326036464bec6fe419a4ae38c8a02ce3e68bf0809674f6aab8ad3003334604051808373ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019250505060405180910390a15b565b600254600154014211151561031557610000565b600660009054906101000a900460ff161561032f57610000565b6001600660006101000a81548160ff02191690837f01000000000000000000000000000000000000000000000000000000000000009081020402179055507fdaec4582d5d9595688c8c98545fdd1c696d41c6aeaeb636737e84ed2f5c00eda600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600454604051808373ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019250505060405180910390a1600060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc6004549081150290604051809050600060405180830381858888f19350505050151561044d57610000565b5b565b600060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006000600560003373ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490506000811115610554576000600560003373ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055503373ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051809050600060405180830381858888f1935050505015156105535780600560003373ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555060009150610559565b5b600191505b5090565b60015481565b600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b6004548156';
+            var SimpleAuctionABI = [{"constant":false,"inputs":[],"name":"bid","outputs":[],"payable":true,"type":"function"},{"constant":false,"inputs":[],"name":"auctionEnd","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"beneficiary","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"withdraw","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"auctionStart","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"highestBidder","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"biddingTime","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"highestBid","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"inputs":[{"name":"_biddingTime","type":"uint256"},{"name":"_beneficiary","type":"address"}],"payable":false,"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"bidder","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"HighestBidIncreased","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"winner","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"AuctionEnded","type":"event"}];
+            var SimpleAuction = eth.contract(SimpleAuctionABI, SimpleAuctionBytecode, { from: accounts[0], gas: 3000000 });
+            var simpleAuctionInstance;
+            var beneficiary = accounts[0];
+            var biddingTime = 300; // 15 thousand seconds
+
+            // poll for new auction data
+            var auctionInterval = setInterval(function updateAuctionHTML() {
+                if (!simpleAuctionInstance) { return; }
+
+                eth.getBalance(accounts[0]).then(function(balance){
+                    el('#accountBalance').innerHTML = Eth.fromWei(balance, 'ether');
+                });
+                eth.getBalance(simpleAuctionInstance.address).then(function(auctionBalance){
+                    el('#raised').innerHTML = Eth.fromWei(auctionBalance, 'ether');
+                });
+                simpleAuctionInstance.beneficiary().then(function(beneficiary){
+                    el('#beneficiary').innerHTML = beneficiary[0].substr(0, 12);
+                });
+                simpleAuctionInstance.highestBidder().then(function(highestBidder){
+                    el('#highestBidder').innerHTML = highestBidder[0].substr(0, 12);
+                });
+                simpleAuctionInstance.highestBid().then(function(highestBid){
+                    el('#highestBid').innerHTML = Eth.fromWei(highestBid[0], 'ether');
+                });
+                simpleAuctionInstance.auctionStart().then(function(auctionStart){
+                    simpleAuctionInstance.biddingTime().then(function(biddingTime){
+                        var timeleft = (auctionStart[0].add(biddingTime[0]))
+                            .sub(new Eth.BN((new Date()).getTime() / 1000));
+
+                        el('#timeleft').innerHTML = timeleft.toString(10);
+
+                        // time left is less than or equal to (lte) 0
+                        if (timeleft.lte(0)) {
+                            clearInterval(auctionInterval);
+                            el('#endAuction').disabled = '';
+                        }
+                    });
+                });
+            }, 600);
+
+            SimpleAuction.new(biddingTime, beneficiary, function(deployError, deployTxHash){
+                if (deployError) {
+                    el('#response').innerHTML = 'Hmm, there was an error: ' + String(deployError);
+                }
+
+                var checkTransaction = setInterval(function(){
+                    eth.getTransactionReceipt(deployTxHash).then(function(receipt){
+                        if (receipt) {
+                            clearInterval(checkTransaction);
+                            simpleAuctionInstance = SimpleAuction.at(receipt.contractAddress);
+
+                            el('#makeBid').addEventListener('click', function(){
+                                var bidTxObject = {
+                                    from: el('#bidAccount').value,
+                                    value: Eth.toWei(el('#bidAmount').value, 'ether'),
+                                };
+
+                                el('#response').innerHTML = 'Placing bid..';
+
+                                simpleAuctionInstance.bid(bidTxObject, function(bidError, bidResult){
+                                    if (bidError) {
+                                        el('#response').innerHTML = 'Hmm, there was an error' + String(bidError);
+                                    } else {
+                                        el('#response').innerHTML = 'Making bid with tx hash: ' + String(bidResult);
+                                    }
+                                });
+                            });
+
+                            el('#endAuction').addEventListener('click', function(){
+                                el('#response').innerHTML = 'Ending auction...';
+
+                                simpleAuctionInstance.endAuction(function(endError, endResult){
+                                    if (endError) {
+                                        el('#response').innerHTML = 'Hmm, there was an error' + String(endError);
+                                    } else {
+                                        el('#response').innerHTML = 'Ending auction with tx hash: ' + String(endResult);
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }, 400);
+            });
+        });
+    </script>
+
+
+    <footer class="footer-area">
+        <!--== Start Footer Top ==-->
+
+        <!--== End Footer Top ==-->
+
+        <!--== Start Footer Main ==-->
+        <div class="footer-main">
+            <div class="container pt--0 pb--0">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="widget-item widget-about">
+                            <div class="widget-logo-area">
+                                <a style="color: #83030f!important;" href="index.html">
+                                    <b  class="logosize">FreeWork</b>
+                                </a>
+                            </div>
+                            <p class="desc">This site is a platform that appeals to the employers and job seekers from all walks of life. </p>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <div style="padding-top: 60px" class="col-md-4 col-lg-4">
+                                <div class="widget-item nav-menu-item1">
+                                    <h4 class="widget-title">Home</h4>
+                                </div>
+                            </div>
+                            <div style="padding-top: 60px" class="col-md-4 col-lg-4">
+                                <div  class="widget-item nav-menu-item2">
+                                    <h4 class="widget-title">Find Jobs</h4>
+                                </div>
+                            </div>
+                            <div style="padding-top: 60px" class="col-md-4 col-lg-4">
+                                <div class="widget-item nav-menu-item4">
+                                    <h4 class="widget-title">Freelancers</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--== End Footer Main ==-->
+
+        <!--== Start Footer Bottom ==-->
+        <div class="footer-bottom">
+            <div class="container pt--0 pb--0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-bottom-content">
+                            <p class="copyright">© 2022 Made with <i class="icofont-heart"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--== End Footer Bottom ==-->
+    </footer>
+    <!--== End Footer Area Wrapper ==-->
+
+    <!--== Scroll Top Button ==-->
+    <div id="scroll-to-top" class="scroll-to-top"><span class="icofont-rounded-up"></span></div>
+
+    <!--== Start Aside Menu ==-->
+    <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h1 class="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
+            <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i class="icofont-simple-left"></i></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Mobile Menu Start -->
+            <div class="mobile-menu-items">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Find Jobs</a>
+                        <ul class="sub-menu">
+                            <li><a href="job.html">Jobs</a></li>
+                            <li><a href="job-details.html">Job Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="employers-details.html">Employers Details</a></li>
+                    <li><a href="#">Candidates</a>
+                        <ul class="sub-menu">
+                            <li><a href="freelancers.html">Candidates</a></li>
+                            <li><a href="freelancer-details.html">Candidate Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Blog</a>
+                        <ul class="sub-menu">
+                            <li><a href="nnecessary/blog-grid.html">Blog Grid</a></li>
+                            <li><a href="nnecessary/blog.html">Blog Left Sidebar</a></li>
+                            <li><a href="nnecessary/blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                            <li><a href="nnecessary/blog-details.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Pages</a>
+                        <ul class="sub-menu">
+                            <li><a href="about-us.html">About us</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="registration.html">Registration</a></li>
+                            <li><a href="page-not-found.html">Page Not Found</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Mobile Menu End -->
+        </div>
+    </aside>
+    <!--== End Aside Menu ==-->
+</div>
+
+<!--=======================Javascript============================-->
+
+<!--=== jQuery Modernizr Min Js ===-->
+<script src="assets/js/modernizr.js"></script>
+<!--=== jQuery Min Js ===-->
+<script src="assets/js/jquery-main.js"></script>
+<!--=== jQuery Migration Min Js ===-->
+<script src="assets/js/jquery-migrate.js"></script>
+<!--=== jQuery Popper Min Js ===-->
+<script src="assets/js/popper.min.js"></script>
+<!--=== jQuery Bootstrap Min Js ===-->
+<script src="assets/js/bootstrap.min.js"></script>
+<!--=== jQuery Swiper Min Js ===-->
+<script src="assets/js/swiper.min.js"></script>
+<!--=== jQuery Fancybox Min Js ===-->
+<script src="assets/js/fancybox.min.js"></script>
+<!--=== jQuery Aos Min Js ===-->
+<script src="assets/js/aos.min.js"></script>
+<!--=== jQuery Counterup Min Js ===-->
+<script src="assets/js/counterup.js"></script>
+<!--=== jQuery Waypoint Js ===-->
+<script src="assets/js/waypoint.js"></script>
+
+<!--=== jQuery Custom Js ===-->
+<script src="assets/js/custom.js"></script>
+
+</body>
+
+</html>

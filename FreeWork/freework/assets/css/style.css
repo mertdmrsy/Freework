@@ -37,7 +37,31 @@ body {
     font-size: 15px;
   }
 }
-
+.checked {
+  color: orange;
+}
+.userimage{
+  background-color: white;
+  border-radius: 25px;
+  margin-right: -320px;
+  max-width: 25%;
+}
+.special{
+  background-color: #a4a7a7;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 20px;
+  text-align: center;
+}
+.row-container{
+  display: flex;
+  flex-direction: row;
+}
+.aaaaa{
+  position: absolute;
+  left: 105px;
+  top: 70px;
+}
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #272a33;
@@ -2326,6 +2350,60 @@ table p {
   .login-register-form-wrap {
     padding: 28px 24px 25px;
   }
+}
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #272a33;
+  color: black;
+  border-radius: 15px;
+}
+.mememe{
+  color: #83030f;
+  font-size: 20px;
+  /* text-align: center; */
+  position: absolute;
+  bottom: 15px;
+  font-weight: 800;
+  left: 85px;
+}
+/* Style the back side */
+.flip-card-back {
+  background-color: #272a33;
+  color: white;
+  border-radius: 15px;
+  transform: rotateY(180deg);
 }
 .login-register-form-wrap .form-title .title {
   border-bottom: 1px solid #d7e1dc;
