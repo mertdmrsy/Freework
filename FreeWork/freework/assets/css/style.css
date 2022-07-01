@@ -37,6 +37,12 @@ body {
     font-size: 15px;
   }
 }
+.searchmy{
+  width: 5%;
+  height: 5%;
+  margin-top: 7px!important;
+  margin-left: -55px;
+}
 .checked {
   color: orange;
 }
