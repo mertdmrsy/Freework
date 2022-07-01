@@ -37,6 +37,9 @@ body {
     font-size: 15px;
   }
 }
+.w35{
+  width: 75% !important;
+}
 .searchmy{
   width: 5%;
   height: 5%;

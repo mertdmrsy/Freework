@@ -81,60 +81,88 @@
             </div>
         </div>
     </header>
-<div style="margin-top: 150px" class="container">
-    <h4>Offers For That Job</h4>
+    <div style="margin-top: 150px" class="container">
+        <h4>Post A New Job</h4>
 
-    <hr />
+        <hr />
 
-    <div class="row">
-        <div class="column">
-            <label>Job Name</label>
-            <blockquote><p><em id="beneficiary">Full-Stack Developer</em><br /><br /></p></blockquote>
+        <div class="row">
+            <div class="col-lg-6">
+                <div>
+                <label for="companyname">Employee Name</label>
+                <input class="w35" type="text" id="companyname" value="FNP Digital" readonly>
+                </div>
+                <div>
+                    <label for="jobname">Job Name</label>
+                    <input class="w35" type="text" id="jobname" placeholder="Please write the name of the job... " >
+                </div>
+                <div>
+                    <label for="duration">Duration</label>
+                    <select class="w35" name="duration" id="duration">
+                        <option value="Hourly">Hourly</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Seosonal">Seosonal</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="experience">Experience</label>
+                    <input class="w35" type="number" id="experience" name="experience" min="0" max="10">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div>
+                    <label for="salary">Salary</label>
+                    <input class="w35" type="text" id="salary" placeholder="Salary... " >
+                </div>
+                <div>
+                    <label for="Sector">Sector</label>
+                    <select class="w35" name="Sector" id="Sector">
+                        <option value="Hourly">Technology</option>
+                        <option value="Daily">Cleaning</option>
+                        <option value="Weekly">Service</option>
+                        <option value="Part-Time">Transportation</option>
+                        <option value="Full-Time">Sports</option>
+                        <option value="Remote">Teaching</option>
+                        <option value="Seosonal">Painting</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="enddate">Application End Date</label>
+                    <input class="w35" type="date" id="enddate" name="enddate">
+                </div>
+                <div>
+                    <label for="explanation">Job Details</label>
+                    <textarea name="explanation" id="explanation" cols="40" rows="50" placeholder="Please write details for that job..."></textarea>
+                </div>
+
+            </div>
         </div>
-        <div class="column">
-            <label>Job Period</label>
-            <blockquote><p><em id="timeleft">Full-Time</em><br /></p></blockquote>
+
+        <hr />
+
+        <div class="row">
+            <div class="column column-25">
+                <label>Minimum Offer Amount</label>
+                <input type="number" id="bidAmount" placeholder="4000 $">
+            </div>
+            <div  class="column column-25">
+                <label ><br /></label>
+                <button style="background-color:#83030f;"  id="makeBid">Offer</button>
+            </div>
         </div>
-        <div class="column">
-            <label>Timeleft</label>
-            <blockquote><p><em id="timeleft">2</em><br />Days</p></blockquote>
-        </div>
-        <div class="column">
-            <label>Highest Offer</label>
-            <blockquote><p><em>4500<span id="highestBidder"></span><br />
-                <span id="highestBid"></span> $</em></p></blockquote>
-        </div>
-        <div class="column">
-            <label>Your Name<label>
-                <blockquote><p><em id="accountAddress">Osman Mert Demirsoy</em><br /><br /></p></blockquote>
-        </div>
-        <div class="column">
-            <label>Your Last Offer</label>
-            <blockquote><p><em id="accountBalance">4750</em><br />$</p></blockquote>
-        </div>
+
+        <hr />
+
+        <button style="background-color:#83030f;" id="endAuction" disabled="disabled">Post Job</button>
+
+        <br /><br />
+
+        <div id="response"></div>
     </div>
-
-    <hr />
-
-    <div class="row">
-        <div class="column column-25">
-            <label>Offer Amount</label>
-            <input type="number" id="bidAmount" placeholder="4000 $">
-        </div>
-        <div  class="column column-25">
-            <label ><br /></label>
-            <button style="background-color:#83030f;"  id="makeBid">Offer</button>
-        </div>
-    </div>
-
-    <hr />
-
-    <button style="background-color:#83030f;" id="endAuction" disabled="disabled">End Auction</button>
-
-    <br /><br />
-
-    <div id="response"></div>
-</div>
 
     <script type="text/javascript" src="ethereumjs-testrpc.js"></script>
     <script type="text/javascript" src="ethjs.js"></script>
